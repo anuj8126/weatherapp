@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
+import moment from 'moment';
 
 function Forcast(props){
   
@@ -9,9 +10,9 @@ return(
 {props.forcastArray && props.forcastArray.map(value=>{
    return(
 <div className="container" style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr'}}>
-  <strong style={{position: 'relative',top: '3vh'}}>{value.dt_txt.split(" ")[0]}</strong>
+  <strong style={{position: 'relative',top: '3vh'}}>{moment(value.dt_txt.split(" ")[0]).format("MMM Do YY") }</strong>
   <div>
-  <img style={{width:'4rem'}} src={`http://openweathermap.org/img/wn/${value.weather[0].icon}@2x.png`}/><strong >{`${Math.floor(value.main.temp_min -273)} / ${Math.floor(value.main.temp_max -273)}`}</strong>
+  <img style={{width:'4rem'}} src={`http://openweathermap.org/img/wn/${value.weather[0].icon}@2x.png`}/><strong >{`${Math.floor(value.main.temp_min -273)} / ${Math.floor(value.main.temp_max -273)} °C`}</strong>
  </div>  
   <div>
       <strong style={{position: 'relative',top: '3vh'}}>{value.weather[0].description}</strong>
