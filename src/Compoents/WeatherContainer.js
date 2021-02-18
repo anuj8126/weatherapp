@@ -1,16 +1,14 @@
 import React,{ useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
 import { Row, Col } from 'antd';
+import moment from 'moment';
 function WeatherContainer(props){
-    var currentdate = new Date(); 
-    var time = currentdate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-    var datetime = currentdate.getDate() + "/"+ (currentdate.getMonth()+1) + "/" + currentdate.getFullYear()+"  "+
-    time;    
+    
     var temp = Math.floor(props.weatherData.main.temp -273) ;                             
 return(
 <>
 <div style={{position:'relative',left:'4vh',top:'2vh'}}>
-<p style={{color:'red'}}>{datetime}</p>
+<p style={{color:'red',fontSize:'3vh'}}>{moment().format("MMM Do YY")}</p>
 <h2>{props.weatherData.name}</h2>
 </div>
 <Row>
